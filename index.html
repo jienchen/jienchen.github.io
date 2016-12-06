@@ -1,30 +1,223 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <title>Bootstrap Example</title>
+  <title>Ji En Chen's Personal Webpage</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-</head>
-<body>
-
-<div class="jumbotron">
-  <h1>Ji En Chen/h1>
-  <p></p> 
-</div>
+  <style>
+  body {
+      position: relative; 
+  }
+  .navbar {
+      margin-bottom: 0px;
+  }
   
-<div class="container">
-  <div class="row">
-    <div class="btn-group btn-group-justified">
-      <a href="#" class="btn btn-primary">About Me</a>
-      <a href="#" class="btn btn-primary">Resume</a>
-      <a href="#" class="btn btn-primary">Works</a>
-      <a href="#" class="btn btn-primary">Projects</a>
+  .jumbotron {
+    margin-bottom: 0px;
+    padding-top: 100px;
+    position: relative;
+    background: #000 url("images/SAM_2054.jpg") center center;
+    width: 100%;
+    height: 600px;
+    background-size: cover;
+    overflow: hidden;
+  }
+  .jumbotron h1{
+    margin:0;
+    padding-left: 50px;
+    color:white;
+  }
+  .col-sm-6{
+    padding-left:100px;
+    padding-right:100px;
+  }
+
+  #heading{color:white;}
+
+  h2{
+    margin:0;
+    padding: 50px;
+  }
+  .navbar-default {
+  background-color: #2b56bb;
+  border-color: #0200a7;
+}
+.navbar-default .navbar-brand {
+  color: #ecf0f1;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+  color: #ffffff;
+}
+.navbar-default .navbar-text {
+  color: #ecf0f1;
+}
+.navbar-default .navbar-nav > li > a {
+  color: #ecf0f1;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  color: #ffffff;
+}
+.navbar-default .navbar-nav > li > .dropdown-menu {
+  background-color: #2b56bb;
+}
+.navbar-default .navbar-nav > li > .dropdown-menu > li > a {
+  color: #ecf0f1;
+}
+.navbar-default .navbar-nav > li > .dropdown-menu > li > a:hover,
+.navbar-default .navbar-nav > li > .dropdown-menu > li > a:focus {
+  color: #ffffff;
+  background-color: #0200a7;
+}
+.navbar-default .navbar-nav > li > .dropdown-menu > li > .divider {
+  background-color: #0200a7;
+}
+.navbar-default .navbar-nav .open .dropdown-menu > .active > a,
+.navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
+.navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+  color: #ffffff;
+  background-color: #0200a7;
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  color: #ffffff;
+  background-color: #0200a7;
+}
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+  color: #ffffff;
+  background-color: #0200a7;
+}
+.navbar-default .navbar-toggle {
+  border-color: #0200a7;
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+  background-color: #0200a7;
+}
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #ecf0f1;
+}
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+  border-color: #ecf0f1;
+}
+.navbar-default .navbar-link {
+  color: #ecf0f1;
+}
+.navbar-default .navbar-link:hover {
+  color: #ffffff;
+}
+
+@media (max-width: 767px) {
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a {
+    color: #ecf0f1;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+  .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+    color: #ffffff;
+  }
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
+  .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+    color: #ffffff;
+    background-color: #0200a7;
+  }
+}
+  </style>
+</head>
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+  <nav class="navbar navbar-default navbar-fixed-top">
+    <div class="container-fluid">
+      <ul class="nav navbar-nav">
+        <li><a href="#">Home</a></li>
+        <li><a href="#About_Me">About Me</a></li>
+        <li><a href="#resume">Résumé</a></li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Works
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#coverLetter">Cover Letter</a></li>
+            <li><a href="#userInstructions">User Instructions</a></li>
+            <li><a href="#literatureReview">Literature Review</a></li>
+            <li><a href="#researchProposal">Research Proposal</a></li>
+            <li><a href="#newsRelease">News Release</a></li>
+          </ul>
+          </li>
+        <li><a href="#">Projects</a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+       <li><a href="#Contact_Me">Contact Me</a></li>
+      </ul>
+    </div>
+  </nav>    
+
+  <div class="jumbotron">
+    <h1>Ji En Chen</h1>
+    <h2 id="heading">Welcome to my webpage!</h2>
+    <p></p> 
+  </div>
+
+  <div class="container-fluid" id="About_Me" align="middle" background="red">
+    <h2>About Me</h2>
+    <div class="row">
+      <div class="col-sm-6">
+      <p style="outline: 1px solid black">
+      I'm currently a Junior at Stonybrook University pursuing a Bachelor's Degree in Computer with a minor in Business.</p>
+      </div>
+      <div class="col-sm-6">pic</div>
     </div>
   </div>
-</div>
+
+  <div class="container-fluid bg" align="middle" id="resume">
+    <h2>Résumé</h2>
+    <iframe src="https://drive.google.com/file/d/0B5iZDTRR1aTNWjY0VnVpNDg5ME0/preview" width="800" height="1027"></iframe>
+  </div>
+  <div class="container-fluid bg" align="middle" id = "coverLetter">
+    <h2>Cover Letter</h2>
+    <iframe src="https://drive.google.com/file/d/0B5iZDTRR1aTNQ0lyTE9sYzZwSUE/preview" width="800" height="1027"></iframe>
+  </div>
+  <div class="container-fluid" align="middle" id = "userInstructions"> 
+    <h2>User Instructions</h2>
+    <iframe src="https://docs.google.com/document/d/1SzyPAcENNnlNsJyMtplLo7FFF-VvU4tXji06Zdn10ss/pub?embedded=true" width="800" height="1027"></iframe>
+  </div>
+  <div class="container-fluid bg" align="middle" id = "literatureReview"> 
+    <h2>Literature Review</h2>
+    <iframe src="https://docs.google.com/document/d/1c7niUFsj6lXMUjsF4GeJq4SgVsRLUfKgbdgxcc9se4U/pub?embedded=true" width="800" height="1027"></iframe>
+  </div>
+  <div class="container-fluid bg" align="middle" id = "researchProposal">
+    <h2>Research Proposal</h2>
+    <iframe src="https://docs.google.com/document/d/1xUW5XX6wjT6fQGkU6zZa0Q1gO8xQ5fEXo3m1pwuCJU0/pub?embedded=true" width="800" height="1027"></iframe>
+  </div>
+  <div class="container-fluid bg" align="middle" id = "newsRelease">
+    <h2>News Release</h2>
+    <iframe src="https://docs.google.com/document/d/1H6LaRGgBOupZkzPQ7FzCEMdK3MsbwIaIA12MxZykYko/pub?embedded=true" width="800" height="1027"></iframe>
+  </div>
+
+  <div class="container-fluid" id="Contact_Me" align="middle">
+    <h2>Contact Me</h2>
+    <h4>Let's get in touch.</h4>
+    <form class="form-horizontal">
+      <div class="form-group">
+        <label class="control-label" for="email"><span class="glyphicon glyphicon-envelope"></span> Email:</label>
+        <p class="form-control-static">jien.chen@stonybrook.edu</p>
+      </div>
+      <label class="control-label" for="phone"><span class="glyphicon glyphicon-earphone"></span> Phone:</label>
+      <p class="form-control-static" >1-(234)-567-8910</p>
+      <h1><h1>
+      <a href="https://www.facebook.com/" target="_blank"><img src="images/FB-f-Logo__blue_29.png"></a> 
+      <a href="https://www.linkedin.com/" target="_blank"><img src="images/In-2C-28px-R.png"></a> 
+      <a href="https://www.github.com/" target="_blank"><img src="images/GitHub-Mark-32px.png"></a> 
+      <h1><h1>
+
+    </form>
+    
 
 </body>
-</html>
+
