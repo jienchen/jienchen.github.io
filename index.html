@@ -5,6 +5,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <style>
@@ -14,7 +15,9 @@
   .navbar {
       margin-bottom: 0px;
   }
-  
+  .body {
+  	font-family: 'Droid Sans', sans-serif;
+  }
   .jumbotron {
     margin-bottom: 0px;
     padding-top: 100px;
@@ -30,13 +33,15 @@
     padding-left: 50px;
     color:white;
   }
-  .col-sm-6{
-    padding-left:100px;
-    padding-right:100px;
+  .col-sm-6.text{
+    padding-left:135px;
+    padding-right:115px;
   }
-
-  #heading{color:white;}
-
+  #heading{color:white;} 
+  a {
+    text-decoration: none; 
+    color: black; 
+	}
   h2{
     margin:0;
     padding: 50px;
@@ -150,7 +155,7 @@
             <li><a href="#newsRelease">News Release</a></li>
           </ul>
           </li>
-        <li><a href="#">Projects</a></li>
+        <li><a href="#projects">Projects</a></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
        <li><a href="#Contact_Me">Contact Me</a></li>
@@ -164,59 +169,101 @@
     <p></p> 
   </div>
 
-  <div class="container-fluid" id="About_Me" align="middle" background="red">
+  <div class="container-fluid" id="About_Me" align="middle">
     <h2>About Me</h2>
     <div class="row">
+      <div class="col-sm-6 text">
+      	<br>
+	    <p style="outline: 2px solid black;outline-offset: 25px;text-indent: 3em;" align="left">
+	    I'm currently a Junior at Stony Brook University pursuing a Bachelor's Degree in Computer with a minor in Business. I started programming in my junior year of high school and has since worked with multiple languages, such as C, Java, JavaScript, and PHP. Some of my hobbies and interests include swimming, hiking, and snowboarding. I'm also a member of the Chinese Association at Stony Brook (CASB), which hosts numerous cultural events throughout the semester.</p>
+	    <br>
+        <a href="https://www.facebook.com/Chinese-Association-at-Stony-Brook-CASB-468851793289244/?fref=ts">
+        <img src="images/CASBLOGOTransparent.png"></a> 
+	   </div>
       <div class="col-sm-6">
-      <p style="outline: 1px solid black">
-      I'm currently a Junior at Stonybrook University pursuing a Bachelor's Degree in Computer with a minor in Business.</p>
+      	<img src="images/eportfoliopic.jpg">
       </div>
-      <div class="col-sm-6">pic</div>
     </div>
   </div>
 
   <div class="container-fluid bg" align="middle" id="resume">
-    <h2>Résumé</h2>
+    <h2>Résumé 
+    	<a href="http://drive.google.com/uc?export=view&id=0B5iZDTRR1aTNWjY0VnVpNDg5ME0" target="_blank"><span class="glyphicon glyphicon-save"></span></a>
+    </h2>
     <iframe src="https://drive.google.com/file/d/0B5iZDTRR1aTNWjY0VnVpNDg5ME0/preview" width="800" height="1027"></iframe>
   </div>
   <div class="container-fluid bg" align="middle" id = "coverLetter">
-    <h2>Cover Letter</h2>
+    <h2>Cover Letter 
+    <a href="http://drive.google.com/uc?export=view&id=0B5iZDTRR1aTNQ0lyTE9sYzZwSUE" target="_blank"><span class="glyphicon glyphicon-save"></span></a></h2>
     <iframe src="https://drive.google.com/file/d/0B5iZDTRR1aTNQ0lyTE9sYzZwSUE/preview" width="800" height="1027"></iframe>
   </div>
   <div class="container-fluid" align="middle" id = "userInstructions"> 
-    <h2>User Instructions</h2>
+    <h2>User Instructions <a href="https://docs.google.com/document/d/1SzyPAcENNnlNsJyMtplLo7FFF-VvU4tXji06Zdn10ss/export?format=doc"><span class="glyphicon glyphicon-save"></span></a></h2></h2>
     <iframe src="https://docs.google.com/document/d/1SzyPAcENNnlNsJyMtplLo7FFF-VvU4tXji06Zdn10ss/pub?embedded=true" width="800" height="1027"></iframe>
   </div>
   <div class="container-fluid bg" align="middle" id = "literatureReview"> 
-    <h2>Literature Review</h2>
+    <h2>Literature Review 
+    <a href="https://docs.google.com/document/d/1c7niUFsj6lXMUjsF4GeJq4SgVsRLUfKgbdgxcc9se4U/export?format=doc">
+    <span class="glyphicon glyphicon-save"></span></a></h2>
     <iframe src="https://docs.google.com/document/d/1c7niUFsj6lXMUjsF4GeJq4SgVsRLUfKgbdgxcc9se4U/pub?embedded=true" width="800" height="1027"></iframe>
   </div>
   <div class="container-fluid bg" align="middle" id = "researchProposal">
-    <h2>Research Proposal</h2>
+    <h2>Research Proposal <a href="https://docs.google.com/document/d/1xUW5XX6wjT6fQGkU6zZa0Q1gO8xQ5fEXo3m1pwuCJU0/export?format=doc">
+    <span class="glyphicon glyphicon-save"></span></a></h2>
     <iframe src="https://docs.google.com/document/d/1xUW5XX6wjT6fQGkU6zZa0Q1gO8xQ5fEXo3m1pwuCJU0/pub?embedded=true" width="800" height="1027"></iframe>
   </div>
   <div class="container-fluid bg" align="middle" id = "newsRelease">
-    <h2>News Release</h2>
+    <h2>News Release <a href="https://docs.google.com/document/d/1H6LaRGgBOupZkzPQ7FzCEMdK3MsbwIaIA12MxZykYkoexport?format=doc">
+    <span class="glyphicon glyphicon-save"></span></a></h2>
     <iframe src="https://docs.google.com/document/d/1H6LaRGgBOupZkzPQ7FzCEMdK3MsbwIaIA12MxZykYko/pub?embedded=true" width="800" height="1027"></iframe>
   </div>
 
+  <div class="container-fluid" id="projects" align="middle">
+    <h2>Projects</h2>
+    <div class="row">
+      <div class="col-sm-4">
+      <h3>NetLogo</h3>
+      <a href="https://github.com/jienchen/SuperMarioRemake">
+      	<h4>Super Mario Remake</h4>
+      	<img src="images/level1.png"></img>
+      </a>
+      </div>
+      <div class="col-sm-4">
+      <h3>PHP/JavaScript</h3>
+      <a href="https://github.com/jienchen/SPDRSAnalysis">
+      	<h4>Analysis of State Street ETF Pages</h4>
+      	<img src="images/screenshot.png"></img>
+      </a>
+      </div>
+      <div class="col-sm-4">
+      <h3>Java/JavaFx</h3>
+      <a href="https://github.com/jienchen/jClassDesignerApp">
+      	<h4>jClassDesigner Java UML Diagram Designer</h4>
+      	<img src="images/jClassDesigner.png"></img>
+      </a>
+      </div>
+    </div>
+  </div>
+  <br><br><br>
   <div class="container-fluid" id="Contact_Me" align="middle">
-    <h2>Contact Me</h2>
+    <h1>Contact Me</h1>
     <h4>Let's get in touch.</h4>
     <form class="form-horizontal">
       <div class="form-group">
-        <label class="control-label" for="email"><span class="glyphicon glyphicon-envelope"></span> Email:</label>
-        <p class="form-control-static">jien.chen@stonybrook.edu</p>
+        <label class="control-label"><span class="glyphicon glyphicon-envelope"></span> Email:</label>
+        	<p class="form-control-static">jien.chen@stonybrook.edu</p>
+      	<label class="control-label"><span class="glyphicon glyphicon-earphone"></span> Phone:</label>
+      	<div>
+      		<p class="form-control-static" >1-(234)-567-8910</p>
+      	</div>
       </div>
-      <label class="control-label" for="phone"><span class="glyphicon glyphicon-earphone"></span> Phone:</label>
-      <p class="form-control-static" >1-(234)-567-8910</p>
-      <h1><h1>
-      <a href="https://www.facebook.com/" target="_blank"><img src="images/FB-f-Logo__blue_29.png"></a> 
+    </form>
+      <a href="https://www.facebook.com/" target="_blank"><img src="images/FB-f-Logo__blue_29.png"></a>
       <a href="https://www.linkedin.com/" target="_blank"><img src="images/In-2C-28px-R.png"></a> 
       <a href="https://www.github.com/" target="_blank"><img src="images/GitHub-Mark-32px.png"></a> 
-      <h1><h1>
-
-    </form>
+      <h1></h1>
+      <br><br>
+   </div>
     
 
 </body>
