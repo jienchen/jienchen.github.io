@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Julien Chen's Personal Webpage</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <script src="js/jquery-3.3.1.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $("a").on('click', function (event) {
+        if (this.hash !== "") {
+          event.preventDefault();
+          var hash = this.hash;
+          $('html, body').animate({
+            scrollTop: $(hash).offset().top
+          }, 600, function () {
+            window.location.hash = hash;
+          });
+        }
+      });
+      $(".clear").on('click', function (event) {
+        console.log($("#caret").html());
+        if ($("#caret").html() == '▼') {
+          $("#caret").html('▲');
+        }
+        else {
+          $("#caret").html('▼');
+        }
+      });
+    });
+  </script>
+</head>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+  <nav class="navbar navbar-expand-sm bg-light navbar-light fixed-top">
+    <a class="navbar-brand" href="#">Julien Chen</a>
+    <ul class="navbar-nav nav-pills ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#aboutMe">About Me</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#resume">Résumé</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Projects</a>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a class="dropdown-item" href="#HL">Hemlock: Movie Database Website</a>
+          <a class="dropdown-item" href="#ASSEP">Analysis of State Street ETF Pages</a>
+          <a class="dropdown-item" href="#JCD">jClassDesigner</a>
+          <a class="dropdown-item" href="#SMR">Super Mario Remake</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#contactMe">Contact Me</a>
+      </li>
+    </ul>
+  </nav>
+
+  <div class="container" id="aboutMe" align="middle" style="padding-top: 56px;">
+    <h2>About Me</h2>
+    <div class="row">
+      <div class="col-6">
+        <br>
+        <p align="left">
+          &emsp;&emsp;I'm a recent graduate from Stony Brook University with a Bachelor's Degree in Computer Science with a minor in
+          Business. I started programming in my junior year of high school and has since worked with multiple languages,
+          such as C, Java, JavaScript, and PHP. Some of my hobbies and interests include swimming, hiking, and snowboarding.
+        </p>
+        <br>
+      </div>
+      <div class="col-6">
+        <img src="images/eportfoliopic.jpg">
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid" id="resume" align="middle" style="padding-top: 56px;">
+    <button class="btn clear" type="button" data-toggle="collapse" data-target="#pdf" aria-expanded="false" aria-controls="pdf">
+      <h2 style="display: inline;">Résumé</h2>
+      <p id="caret" style="display:inline; vertical-align:super">▼</p>
+    </button>
+    <!-- <a href="https://docs.google.com/uc?export=download&id=1Al705nuxSt2pQYqvuIEXshW7xEeekM3w" target="_blank">DL
+      </a> -->
+    <div id="pdf" class="collapse">
+      <iframe src="https://drive.google.com/file/d/1Al705nuxSt2pQYqvuIEXshW7xEeekM3w/preview" width="640" height="830"></iframe>
+    </div>
+
+  </div>
+  <div class="container" id="projects" align="middle">
+    <h2>Projects</h2>
+    <div class="row">
+      <div class="col-12" id="HL" style="padding-top: 56px;">
+        <div class="row">
+          <div class="col-6">
+            <img src="images/HemlockHomePage.png" style="max-width: 55%; height: auto;">
+          </div>
+          <div class="col-6 vcenter">
+            <div class="card">
+              <div class="card-body">
+                <a href="https://github.com/jienchen/Hemlock" target="_blank">
+                  <h3 class="card-title">Hemlock: Movie Database Website</h3>
+                </a>
+                <p class="card-text">Project Members: Jeffrey Fu, Masato Ikeda, Kyle Johnson</p>
+                <p class="card-text" align="left">
+                  &emsp;&emsp;Hemlock is a reproduction of Rotten Tomatoes® website. Thousands of movies, TV shows, actors, and user information
+                  were scraped from different websites using
+                  <a href="https://www.crummy.com/software/BeautifulSoup/" target="_blank">Beautiful Soup</a>
+                  and stored in a SQL database. Each page on the site is generated using Spring with Thymeleaf. Users can sign up for an account
+                  to access additional features such as writing reviews, following other users, and adding movies to a watchlist.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-12" id="ASSEP" style="padding-top: 56px;">
+        <a href="https://github.com/jienchen/SPDRSAnalysis" target="_blank">
+          <h3>Analysis of State Street ETF Pages</h3>
+        </a>
+        <div class="row">
+          <div class="col-6 vcenter">
+            <p align="left">
+              &emsp;&emsp;This project parses top holdings for specificed ETF's from
+              <a href="https://us.spdrs.com/en" target="_blank">State Street's website</a> using
+              <a href="http://simplehtmldom.sourceforge.net/" target="_blank">PHP Simple HTML DOM Parser</a>. It runs on a local Apache server and MySQL server using XAMPP. Charts were
+              generated using the AmCharts library and CSV files were also generated and available for download. All scraped
+              data was also stored in a SQL database so subsequent queries would not require the site to be scraped again.
+            </p>
+          </div>
+          <div class="col-6">
+            <img src="images/screenshot.png">
+          </div>
+        </div>
+      </div>
+      <div class="col-12" id="JCD" style="padding-top: 56px;">
+        <a href="https://github.com/jienchen/jClassDesignerApp">
+          <h3>jClassDesigner: Java UML Diagram Designer</h3>
+        </a>
+        <div class="row">
+          <div class="col-6">
+            <img src="images/jClassDesigner.png">
+          </div>
+          <div class="col-6 vcenter">
+            <p align="left">
+              &emsp;&emsp;The jClassDesigner is a UML diagram designer for Java Classes using the JavaFx platform. Users are able to add
+              classes (along with variables and attributes) and interfaces. Each diagram could be saved as a JSON file and
+              then loaded at a later time. Screenshots of the workspace can also be taken and saved.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="col-12" id="SMR" style="padding-top: 56px;">
+        <div class="row">
+          <div class="col-6 vcenter">
+            <div class="card">
+              <div class="card-body">
+                <a href="https://github.com/jienchen/SuperMarioRemake" target="_blank">
+                  <h3 class="card-title">Super Mario Remake</h3>
+                </a>
+                <p class="card-text">Project Members: Milo Han</p>
+                <p class="card-text" align="left">
+                  &emsp;&emsp;One of my earliest projects is a recreation of the classic Super Mario Bros. using
+                  <a href="https://ccl.northwestern.edu/netlogo/" target="_blank">NetLogo</a>
+                  , an agent-based language. Players control Mario and go up against the usual enemies: goombas, koopas, and even Bowser. Stages
+                  are procedurally generated and progressively get more difficult to increase replayability.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-6">
+            <img src="images/level1.png">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fluid" id="contactMe" align="middle" style="padding-top: 56px;">
+    <h1>Contact Me</h1>
+    <form class="form-horizontal">
+      <div class="form-group">
+        <label class="control-label">
+          <span class="glyphicon glyphicon-envelope"></span> Email:</label>
+        <p class="form-control-static">gn.jienchen@gmail.com</p>
+        <label class="control-label">
+          <span class="glyphicon glyphicon-earphone"></span> Phone:</label>
+        <div>
+          <p class="form-control-static">1-(718)-552-7612</p>
+        </div>
+      </div>
+    </form>
+    <a href="https://www.facebook.com/" target="_blank">
+      <img src="images/FB-f-Logo__blue_29.png">
+    </a>
+    <a href="https://www.linkedin.com/" target="_blank">
+      <img src="images/In-2C-28px-R.png">
+    </a>
+    <a href="https://github.com/jienchen" target="_blank">
+      <img src="images/GitHub-Mark-32px.png">
+    </a>
+    <br>
+    <br>
+  </div>
+</body>

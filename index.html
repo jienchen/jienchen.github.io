@@ -1,269 +1,402 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-  <title>Ji En Chen's Personal Webpage</title>
+  <title>Julien Chen's Personal Webpage</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-  <link href="https://fonts.googleapis.com/css?family=Droid+Sans" rel="stylesheet">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-  <style>
-  body {
-      position: relative; 
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/lightbox.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Raleway" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+  <script src="js/jquery-3.3.1.js"></script>
+  <script src="js/popper.min.js"></script>
+  <script src="js/bootstrap.min.js"></script>
+  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.31exp"></script>
+  <script src="js/googlemaps.js"></script>
+  <script src="js/lightbox.js"></script>
+  <script>
+    lightbox.option({
+      'fadeDuration': 400,
+      'imageFadeDuration': 200
+    })
+  </script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $(".navbar, a").on('click', function (event) {
+        if (this.hash !== "") {
+          event.preventDefault();
+          var hash = this.hash;
+          $('html, body').animate({
+            scrollTop: $(hash).offset().top
+          }, 600, function () {
+            window.location.hash = hash;
+          });
+        }
+      });
+      $(".clear").on('click', function (event) {
+        console.log($("#caret").html());
+        if ($("#caret").html() == '▼') {
+          $("#caret").html('▲');
+        }
+        else {
+          $("#caret").html('▼');
+        }
+      });
+      $('[data-toggle="popover"]').popover({ delay: 100 });
+      google.maps.event.addDomListener(window, 'load', sbuInitialize);
+      google.maps.event.addDomListener(window, 'load', stuyInitialize);
+    });
+
+    function sbuInitialize() {
+      var sbuLatlng = new google.maps.LatLng(40.9124, -73.1234);
+      var sbuOptions = {
+        zoom: 14,
+        center: sbuLatlng,
+      }
+      var sbuMap = new google.maps.Map(document.getElementById('sbu-canvas'), sbuOptions);
+    }
+
+    function stuyInitialize() {
+      var stuyLatlng = new google.maps.LatLng(40.71831, -74.01424);
+      var stuyOptions = {
+        zoom: 16,
+        center: stuyLatlng,
+      }
+      var stuyMap = new google.maps.Map(document.getElementById('stuy-canvas'), stuyOptions);
+    }
+
+    //need to rewrite in prototype
+//no jquery
+
+$(function() {
+  var $blocks = $('.slideIn.notViewed');
+  var $window = $(window);
+
+  $window.on('scroll', function(e){
+    $blocks.each(function(i,elem){
+      if($(this).hasClass('viewed')) 
+        return;
+
+      isScrolledIntoView($(this));
+    });
+  });
+});
+
+function isScrolledIntoView(elem) {
+  var docViewTop = $(window).scrollTop();
+  var docViewBottom = docViewTop + $(window).height();
+  var elemOffset = 0;
+  
+  if(elem.data('offset') != undefined) {
+    elemOffset = elem.data('offset');
   }
-  .navbar {
-      margin-bottom: 0px;
+  var elemTop = $(elem).offset().top;
+  var elemBottom = elemTop + $(elem).height();
+  
+  if(elemOffset != 0) { // custom offset is updated based on scrolling direction
+    if(docViewTop - elemTop >= 0) {// scrolling up from bottom
+      elemTop = $(elem).offset().top + elemOffset;
+    } else {// scrolling down from top
+      elemBottom = elemTop + $(elem).height() - elemOffset
+    }
   }
-  .body {
-  	font-family: 'Droid Sans', sans-serif;
+  
+  if((elemBottom <= docViewBottom) && (elemTop >= docViewTop)) {
+    $(elem).removeClass('notViewed').addClass('viewed');
   }
-  .jumbotron {
-    margin-bottom: 0px;
-    padding-top: 100px;
-    position: relative;
-    background: #000 url("images/SAM_2054.jpg") center center;
-    width: 100%;
-    height: 600px;
-    background-size: cover;
-    overflow: hidden;
-  }
-  .jumbotron h1{
-    margin:0;
-    padding-left: 50px;
-    color:white;
-  }
-  .col-sm-6.text{
-    padding-left:135px;
-    padding-right:115px;
-  }
-  #heading{color:white;} 
-  a {
-    text-decoration: none; 
-    color: black; 
-	}
-  h2{
-    margin:0;
-    padding: 50px;
-  }
-  .navbar-default {
-  background-color: #2b56bb;
-  border-color: #0200a7;
-}
-.navbar-default .navbar-brand {
-  color: #ecf0f1;
-}
-.navbar-default .navbar-brand:hover,
-.navbar-default .navbar-brand:focus {
-  color: #ffffff;
-}
-.navbar-default .navbar-text {
-  color: #ecf0f1;
-}
-.navbar-default .navbar-nav > li > a {
-  color: #ecf0f1;
-}
-.navbar-default .navbar-nav > li > a:hover,
-.navbar-default .navbar-nav > li > a:focus {
-  color: #ffffff;
-}
-.navbar-default .navbar-nav > li > .dropdown-menu {
-  background-color: #2b56bb;
-}
-.navbar-default .navbar-nav > li > .dropdown-menu > li > a {
-  color: #ecf0f1;
-}
-.navbar-default .navbar-nav > li > .dropdown-menu > li > a:hover,
-.navbar-default .navbar-nav > li > .dropdown-menu > li > a:focus {
-  color: #ffffff;
-  background-color: #0200a7;
-}
-.navbar-default .navbar-nav > li > .dropdown-menu > li > .divider {
-  background-color: #0200a7;
-}
-.navbar-default .navbar-nav .open .dropdown-menu > .active > a,
-.navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
-.navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
-  color: #ffffff;
-  background-color: #0200a7;
-}
-.navbar-default .navbar-nav > .active > a,
-.navbar-default .navbar-nav > .active > a:hover,
-.navbar-default .navbar-nav > .active > a:focus {
-  color: #ffffff;
-  background-color: #0200a7;
-}
-.navbar-default .navbar-nav > .open > a,
-.navbar-default .navbar-nav > .open > a:hover,
-.navbar-default .navbar-nav > .open > a:focus {
-  color: #ffffff;
-  background-color: #0200a7;
-}
-.navbar-default .navbar-toggle {
-  border-color: #0200a7;
-}
-.navbar-default .navbar-toggle:hover,
-.navbar-default .navbar-toggle:focus {
-  background-color: #0200a7;
-}
-.navbar-default .navbar-toggle .icon-bar {
-  background-color: #ecf0f1;
-}
-.navbar-default .navbar-collapse,
-.navbar-default .navbar-form {
-  border-color: #ecf0f1;
-}
-.navbar-default .navbar-link {
-  color: #ecf0f1;
-}
-.navbar-default .navbar-link:hover {
-  color: #ffffff;
 }
 
-@media (max-width: 767px) {
-  .navbar-default .navbar-nav .open .dropdown-menu > li > a {
-    color: #ecf0f1;
-  }
-  .navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
-  .navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
-    color: #ffffff;
-  }
-  .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
-  .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
-  .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
-    color: #ffffff;
-    background-color: #0200a7;
-  }
-}
-  </style>
+  </script>
 </head>
+
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
-  <nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container-fluid">
-      <ul class="nav navbar-nav">
-        <li><a href="#">Home</a></li>
-        <li><a href="#About_Me">About Me</a></li>
-        <li><a href="#resume">Résumé</a></li>
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" href="#">Works
-          <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href="#coverLetter">Cover Letter</a></li>
-            <li><a href="#userInstructions">User Instructions</a></li>
-            <li><a href="#literatureReview">Literature Review</a></li>
-            <li><a href="#researchProposal">Research Proposal</a></li>
-            <li><a href="#newsRelease">News Release</a></li>
-          </ul>
-          </li>
-        <li><a href="#projects">Projects</a></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-       <li><a href="#Contact_Me">Contact Me</a></li>
-      </ul>
-    </div>
-  </nav>    
+  <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
+    <a class="navbar-brand" href="#top">Julien Chen</a>
+    <ul class="navbar-nav nav-pills ml-auto">
+      <li class="nav-item">
+        <a class="nav-link" href="#aboutMe">About Me</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#resume">Résumé</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#education">Education</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Projects</a>
+        <div class="dropdown-menu dropdown-menu-right">
+          <a class="dropdown-item" href="#projects">Hemlock: Movie Database Website</a>
+          <a class="dropdown-item" href="#SPDRS">Analysis of State Street ETF Pages</a>
+          <a class="dropdown-item" href="#JCD">jClassDesigner</a>
+          <a class="dropdown-item" href="#331">Computer Security</a>
+          <a class="dropdown-item" href="#SMR">Super Mario Remake</a>
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#gallery">Gallery</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#contact">Contact</a>
+      </li>
+    </ul>
+  </nav>
 
-  <div class="jumbotron">
-    <h1>Ji En Chen</h1>
-    <h2 id="heading">Welcome to my webpage!</h2>
-    <p></p> 
+  <div class="jumbotron jumbotron-fluid" id="top">
+    <div class="container" style="padding-top: 100px">
+      <h2 class="display-4" style="font-family: 'Quicksand', sans-serif;text-shadow: 0 0 7px #000000;">Welcome!</h2>
+    </div>
   </div>
 
-  <div class="container-fluid" id="About_Me" align="middle">
-    <h2>About Me</h2>
+  <div class="container" id="aboutMe" align="middle" style="padding-top: 56px;">
+    <h1 style="padding-bottom: 56px;">About Me</h1>
     <div class="row">
-      <div class="col-sm-6 text">
-      	<br>
-	    <p style="outline: 2px solid black;outline-offset: 25px;text-indent: 3em;" align="left">
-	    I'm currently a Junior at Stony Brook University pursuing a Bachelor's Degree in Computer with a minor in Business. I started programming in my junior year of high school and has since worked with multiple languages, such as C, Java, JavaScript, and PHP. Some of my hobbies and interests include swimming, hiking, and snowboarding. I'm also a member of the Chinese Association at Stony Brook (CASB), which hosts numerous cultural events throughout the semester.</p>
-	    <br>
-        <a href="https://www.facebook.com/Chinese-Association-at-Stony-Brook-CASB-468851793289244/?fref=ts">
-        <img src="images/CASBLogoTransparent.png"></a> 
-	   </div>
-      <div class="col-sm-6">
-      	<img src="images/eportfoliopic.jpg">
+      <div class="col-6">
+        <img class="rounded-circle" src="images/eportfoliopic.jpg" alt="Julien Chen">
+      </div>
+      <div class="col-6 vcenter">
+        <p class="text-left">&emsp;&emsp;I'm a recent graduate from Stony Brook University (May 2018) with a Bachelor's Degree in Computer Science
+          with a minor in Business. I started programming in my junior year of high school and have since worked with multiple
+          languages such as C, Java, JavaScript, PHP, and Python. Some of my hobbies and interests include swimming, snowboarding,
+          traveling, and video editing.</p>
       </div>
     </div>
   </div>
 
-  <div class="container-fluid bg" align="middle" id="resume">
-    <h2>Résumé 
-    	<a href="http://drive.google.com/uc?export=view&id=0B5iZDTRR1aTNWjY0VnVpNDg5ME0" target="_blank"><span class="glyphicon glyphicon-save"></span></a>
-    </h2>
-    <iframe src="https://drive.google.com/file/d/0B5iZDTRR1aTNWjY0VnVpNDg5ME0/preview" width="800" height="1027"></iframe>
-  </div>
-  <div class="container-fluid bg" align="middle" id = "coverLetter">
-    <h2>Cover Letter 
-    <a href="http://drive.google.com/uc?export=view&id=0B5iZDTRR1aTNQ0lyTE9sYzZwSUE" target="_blank"><span class="glyphicon glyphicon-save"></span></a></h2>
-    <iframe src="https://drive.google.com/file/d/0B5iZDTRR1aTNQ0lyTE9sYzZwSUE/preview" width="800" height="1027"></iframe>
-  </div>
-  <div class="container-fluid" align="middle" id = "userInstructions"> 
-    <h2>User Instructions <a href="https://docs.google.com/document/d/1SzyPAcENNnlNsJyMtplLo7FFF-VvU4tXji06Zdn10ss/export?format=doc"><span class="glyphicon glyphicon-save"></span></a></h2></h2>
-    <iframe src="https://docs.google.com/document/d/1SzyPAcENNnlNsJyMtplLo7FFF-VvU4tXji06Zdn10ss/pub?embedded=true" width="800" height="1027"></iframe>
-  </div>
-  <div class="container-fluid bg" align="middle" id = "literatureReview"> 
-    <h2>Literature Review 
-    <a href="https://docs.google.com/document/d/1c7niUFsj6lXMUjsF4GeJq4SgVsRLUfKgbdgxcc9se4U/export?format=doc">
-    <span class="glyphicon glyphicon-save"></span></a></h2>
-    <iframe src="https://docs.google.com/document/d/1c7niUFsj6lXMUjsF4GeJq4SgVsRLUfKgbdgxcc9se4U/pub?embedded=true" width="800" height="1027"></iframe>
-  </div>
-  <div class="container-fluid bg" align="middle" id = "researchProposal">
-    <h2>Research Proposal <a href="https://docs.google.com/document/d/1xUW5XX6wjT6fQGkU6zZa0Q1gO8xQ5fEXo3m1pwuCJU0/export?format=doc">
-    <span class="glyphicon glyphicon-save"></span></a></h2>
-    <iframe src="https://docs.google.com/document/d/1xUW5XX6wjT6fQGkU6zZa0Q1gO8xQ5fEXo3m1pwuCJU0/pub?embedded=true" width="800" height="1027"></iframe>
-  </div>
-  <div class="container-fluid bg" align="middle" id = "newsRelease">
-    <h2>News Release <a href="https://docs.google.com/document/d/1H6LaRGgBOupZkzPQ7FzCEMdK3MsbwIaIA12MxZykYkoexport?format=doc">
-    <span class="glyphicon glyphicon-save"></span></a></h2>
-    <iframe src="https://docs.google.com/document/d/1H6LaRGgBOupZkzPQ7FzCEMdK3MsbwIaIA12MxZykYko/pub?embedded=true" width="800" height="1027"></iframe>
+  <div class="container" id="resume" align="middle" style="padding-top: 56px; margin-bottom: 50px;">
+    <button class="btn clear" type="button" data-toggle="collapse" data-target="#pdf" aria-expanded="false" aria-controls="pdf">
+      <h1 style="display: inline;">Résumé
+        <font id="caret" size="5" style="vertical-align: middle;">▼</font>
+      </h1>
+    </button>
+    <!-- <a href="https://docs.google.com/uc?export=download&id=1Al705nuxSt2pQYqvuIEXshW7xEeekM3w" target="_blank">DL
+      </a> -->
+    <div id="pdf" class="collapse show">
+      <iframe src="https://drive.google.com/file/d/1c8WFtzZJZUvyjRyjEVDp66GNY6R0kaD3/preview" width="640" height="830"></iframe>
+    </div>
   </div>
 
-  <div class="container-fluid" id="projects" align="middle">
-    <h2>Projects</h2>
+  <div class="container" id="education" align="middle" style="padding-top: 56px; margin-bottom: 50px;">
+    <h1>Education</h1>
+    <div class="row" style="padding-top: 10px;">
+      <div class="col-4" align="right">
+        <img class="img-fluid" src="images/SBU horz_2clr_rgb_300ppi.png" style="max-width: 100%; height: auto;">
+        <p style="margin-bottom: 0px;">August 2014 - May 2018</p>
+        <a id="sbu" data-html="true" data-toggle="popover" data-content="<div id='sbu-canvas'></div>">
+          <img src="images/baseline_location_on_black_18dp.png"> Stony Brook, New York
+        </a>
+      </div>
+      <div class="col-8" align="left" style="padding-top:10px;padding-bottom:20px;padding-left:70px; padding-right: 40px;">
+        <h5>Bachelor of Science - Computer Science</h5>
+        <p>
+          I was exposed to a variety of technologies through courses such as Computer Networks, Computer Security, Computer Vision,
+          Database Systems, and Operating Systems. From MIPS assembly to C to Python to SQL, I worked with languages of varying
+          sophistication, structure, syntax, and purpose.
+        </p>
+        <h5>Minor in Business Management</h5>
+        <p>
+          One of the best decisions I made in college was to take on a Business minor. I was able to work on presentation skills, financial
+          knowledge, graphic design (for marketing), and Excel skills. These courses also allowed me to work alongside business-orientated
+          classmates whose mindsets were vastly different from those in my major.
+        </p>
+      </div>
+    </div>
+
     <div class="row">
-      <div class="col-sm-4">
-      <a href="https://github.com/jienchen/SuperMarioRemake">
-      <h3>Super Mario Remake</h3>
-      	<h4>NetLogo</h4>
-      	<img src="images/level1.png"></img>
-      </a>
+      <div class="col-4" align="right">
+        <img class="img-fluid" src="images/STUYHS.png" style="max-width: 100%; height: auto;">
+        <p style="margin-bottom: 0px;">September 2010 - June 2014</p>
+        <a id="stuy" data-html="true" data-toggle="popover" data-content="<div id='stuy-canvas'></div>">
+          <img src="images/baseline_location_on_black_18dp.png"> New York, New York
+        </a>
       </div>
-      <div class="col-sm-4">
-      <a href="https://github.com/jienchen/SPDRSAnalysis">
-      <h3>Analysis of State Street ETF Pages</h3>
-      	<h4>PHP/JavaScript</h4>
-      	<img src="images/screenshot.png"></img>
-      </a>
+      <div class="col-8" align="left" style="padding-top:20px;padding-left:70px;padding-right: 40px;">
+        <h5>Introduction to Computer Science / AP Computer Science</h5>
+        My interest in Computer Science was sparked when I took a Intro to C.S. course. With the satisifcation of creating my first
+        project, I decided to delve deeper and enroll in the AP Course.
       </div>
-      <div class="col-sm-4">
-      <a href="https://github.com/jienchen/jClassDesignerApp">
-	      <h3>jClassDesigner <br/> Java UML Diagram Designer</h3>
-      	<h4>Java/JavaFx</h4>
-      	<img src="images/jClassDesigner.png"></img>
-      </a>
+    </div>
+
+  </div>
+
+  <div class="container" id="projects" align="middle">
+    <h1>Projects</h1>
+    <div class="row">
+      <div class="col-12 notViewed slideIn" data-position="right" data-offset="60" id="HL" style="padding-top:10px;padding-bottom: 56px;">
+        <h3><a href="https://github.com/jienchen/Hemlock" target="_blank">Hemlock: Movie Database Website</a></h3>
+        <div class="row">
+          <div class="col-6">
+            <div class="hovereffect">
+              <img class="img-fluid" src="images/HemlockHomePage.png" style="max-width: 70%; height: auto;">
+              <div class="overlay">
+                <a class="info" href="https://github.com/jienchen/Hemlock" target="_blank">View Code</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 vcenter">
+            <p class="font-weight-light">Project Members: Jeffrey Fu, Masato Ikeda, Kyle Johnson</p>
+            <p class="text-left">
+              &emsp;&emsp;Hemlock is a reproduction of the
+              <a href="https://www.rottentomatoes.com/" target="_blank">Rotten Tomatoes®</a> website. Thousands of movies, TV shows, and actors were scraped from different websites
+              using
+              <a href="https://www.crummy.com/software/BeautifulSoup/" target="_blank">Beautiful Soup</a>
+              and stored in a SQL database. Each page on the site is generated using
+              <a href="https://spring.io/" target="_blank">Spring</a> with
+              <a href="https://www.thymeleaf.org/" target="_blank">Thymeleaf</a>. Users can sign up for an account to access additional features such as writing reviews, following
+              other users, and adding movies to a watchlist.</p>
+          </div>
+        </div>
+      </div>
+
+      <hr id="SPDRS">
+
+      <div class="col-12 notViewed slideIn" data-position="left" data-offset="60" style="padding-top: 56px;padding-bottom: 56px;">
+        <h3><a href="https://github.com/jienchen/SPDRSAnalysis" target="_blank">Analysis of State Street ETF Pages</a></h3>
+        <div class="row">
+          <div class="col-6 vcenter">
+            <p align="left">
+              &emsp;&emsp;This project parses top holdings for specificed ETF's from
+              <a href="https://us.spdrs.com/en" target="_blank">State Street's website</a> using
+              <a href="http://simplehtmldom.sourceforge.net/" target="_blank">PHP Simple HTML DOM Parser</a>. It runs on a local Apache server and MySQL server using XAMPP. Charts were
+              generated using the
+              <a href="https://www.amcharts.com/" target="_blank">AmCharts</a> library and CSV files were also generated and available for download. All scraped data was also
+              stored in a SQL database so subsequent queries would not require the site to be scraped again.
+            </p>
+          </div>
+          <div class="col-6">
+            <div class="hovereffect">
+              <img class="img-fluid m-0" src="images/SPDRS.png">
+              <div class="overlay">
+                <a class="info" href="https://github.com/jienchen/SPDRSAnalysis" target="_blank">View Code</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr id="JCD">
+
+      <div class="col-12 notViewed slideIn" data-position="right" data-offset="60" style="padding-top: 56px;padding-bottom: 56px;">
+        <h3>
+          <a href="https://github.com/jienchen/jClassDesignerApp">jClassDesigner: Java UML Diagram Designer</a>
+        </h3>
+        <div class="row">
+          <div class="col-6">
+            <div class="hovereffect">
+              <img class="img-fluid" src="images/jClassDesigner.png">
+              <div class="overlay">
+                <a class="info" href="https://github.com/jienchen/jClassDesignerApp" target="_blank">View Code</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 vcenter">
+            <p align="left">
+              &emsp;&emsp;The jClassDesigner is a UML diagram designer for Java Classes using the JavaFx platform. Users are able to add
+              classes, variables, attributes, and interfaces. Each diagram could be saved as a JSON file and then loaded
+              at a later time. Screenshots of the workspace can also be taken and saved.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <hr id="331">
+
+      <div class="col-12 notViewed slideIn" data-position="left" data-offset="60" style="padding-top: 56px;padding-bottom: 56px;">
+        <h3>
+          <a href="https://github.com/jienchen/CSE331-Computer-Security" target="_blank">Computer Security</a>
+        </h3>
+        <div class="row">
+          <div class="col-6 vcenter">
+            <p class="text-left">
+              &emsp;&emsp;By running on a virtual machine such as
+              <a href="https://www.kali.org/" target="_blank">Kali Linux</a>, which includes
+              <a href="https://www.metasploit.com/" target="_blank">Metasploit</a> and
+              <a href="https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/5/html/deployment_guide/ch-selinux" target="_blank">SELinux</a>, python scripts can exploit vulnerabilites such as buffer overflow, operating system, and network
+              vulnerability. In this controlled environment, security policies and other settings can be manipulated to show
+              how systems are susceptible to threats but also how they can be protected from them.
+            </p>
+          </div>
+          <div class="col-6">
+            <div class="hovereffect">
+              <img class="img-fluid" src="images/synprobe.png" style="max-width: 70%; height: auto;">
+              <div class="overlay">
+                <a class="info" href="https://github.com/jienchen/CSE331-Computer-Security" target="_blank">View Code</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr id="SMR">
+
+      <div class="col-12 notViewed slideIn" data-position="right" data-offset="60" style="padding-top: 56px;padding-bottom: 56px;">
+        <h3>
+          <a href="https://github.com/jienchen/SuperMarioRemake" target="_blank">Super Mario Remake</a>
+        </h3>
+        <div class="row">
+          <div class="col-6">
+            <div class="hovereffect">
+              <img class="img-fluid" src="images/SuperMarioRemake.png">
+              <div class="overlay">
+                <a class="info" href="https://github.com/jienchen/SuperMarioRemake" target="_blank">View Code</a>
+              </div>
+            </div>
+          </div>
+          <div class="col-6 vcenter">
+            <p class="font-weight-light">Project Members: Milo Han</p>
+            <p class="text-left">
+              &emsp;&emsp;One of my earliest projects is a recreation of the classic Super Mario Bros. using
+              <a href="https://ccl.northwestern.edu/netlogo/" target="_blank">NetLogo</a>, an agent-based language. Players control Mario and go up against the usual enemies: goombas, koopas,
+              and even Bowser. Stages are procedurally generated and progressively get more difficult to increase replayability.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </div>
-  <br><br><br>
-  <div class="container-fluid" id="Contact_Me" align="middle">
-    <h1>Contact Me</h1>
-    <form class="form-horizontal">
-      <div class="form-group">
-        <label class="control-label"><span class="glyphicon glyphicon-envelope"></span> Email:</label>
-        	<p class="form-control-static">jien.chen@stonybrook.edu</p>
-      	<label class="control-label"><span class="glyphicon glyphicon-earphone"></span> Phone:</label>
-      	<div>
-      		<p class="form-control-static" >1-(234)-567-8910</p>
-      	</div>
-      </div>
-    </form>
-      <a href="https://www.facebook.com/" target="_blank"><img src="images/FB-f-Logo__blue_29.png"></a>
-      <a href="https://www.linkedin.com/" target="_blank"><img src="images/In-2C-28px-R.png"></a> 
-      <a href="https://www.github.com/" target="_blank"><img src="images/GitHub-Mark-32px.png"></a> 
-      <h1></h1>
-      <br><br>
-   </div>
-    
 
+  <div class="container" id="gallery" align="middle" style="padding-top: 56px;">
+    <h1>Gallery</h1>
+    <p style="font-size: 18px;">Photography is one of my many interests. Here are some pictures I have taken while traveling. Enjoy!</p>
+    <div class="row" style="padding-top:10px;padding-bottom: 56px;">
+      <div class="col-6">
+        <a class="notViewed slideIn" data-position="bottom" data-offset="60" href="images/Edited-3090.jpg" data-lightbox="gallery" data-title="Fuzhou, China">
+          <img class="img-fluid hover-scale" src="images/Edited-3090.jpg">
+        </a>
+        <a class="notViewed slideIn" data-position="bottom" data-offset="60" href="images/Edited-3213.jpg" data-lightbox="gallery" data-title="Fuzhou, China">
+          <img class="img-fluid hover-scale" src="images/Edited-3213.jpg">
+        </a>
+      </div>
+
+      <div class="col-6">
+        <a class="notViewed slideIn" data-position="bottom" data-offset="60" href="images/Edited-165627.jpg" data-lightbox="gallery" data-title="Key West, Florida">
+          <img class="img-fluid hover-scale" src="images/Edited-165627.jpg">
+        </a>
+        <a class="notViewed slideIn" data-position="bottom" data-offset="60" href="images/Edited-172143.jpg" data-lightbox="gallery" data-title="New York, New York">
+          <img class="img-fluid hover-scale" src="images/Edited-172143.jpg">
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container-fluid" id="contact" align="middle" style="padding-top: 56px;">
+    <h1 style="padding-bottom: 20px;">Contact Me</h1>
+    <div class="row py-3">
+      <div class="col-12">
+        <img src="images/baseline_email_black_18dp.png"> Email:
+        <p>gn.jienchen@gmail.com</p>
+        <img src="images/baseline_phone_black_18dp.png"> Phone:
+        <p>1-(718)-552-7612</p>
+        <a href="https://www.linkedin.com/" target="_blank">
+          <img src="images/In-2C-28px-R.png">
+        </a>
+        <a href="https://github.com/jienchen/" target="_blank">
+          <img src="images/GitHub-Mark-32px.png">
+        </a>
+      </div>
+    </div>
+    <br>
+    <br>
+  </div>
 </body>
-
