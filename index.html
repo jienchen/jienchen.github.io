@@ -89,33 +89,39 @@
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
   <nav class="navbar navbar-expand-sm bg-dark navbar-dark fixed-top">
     <a class="navbar-brand" href="#top">Julien Chen</a>
-    <ul class="navbar-nav nav-pills ml-auto">
-      <li class="nav-item">
-        <a class="nav-link" href="#aboutMe">About Me</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#resume">Résumé</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#education">Education</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Projects</a>
-        <div class="dropdown-menu dropdown-menu-right">
-          <a class="dropdown-item" href="#projects">Hemlock: Movie Database Website</a>
-          <a class="dropdown-item" href="#SPDRS">Analysis of State Street ETF Pages</a>
-          <a class="dropdown-item" href="#JCD">jClassDesigner</a>
-          <a class="dropdown-item" href="#331">Computer Security</a>
-          <a class="dropdown-item" href="#SMR">Super Mario Remake</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#gallery">Gallery</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#contact">Contact</a>
-      </li>
-    </ul>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarToggle">
+      <ul class="navbar-nav nav-pills ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="#aboutMe">About Me</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#resume">Résumé</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#education">Education</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Projects</a>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a class="dropdown-item" href="#projects">Hemlock: Movie Database Website</a>
+            <a class="dropdown-item" href="#SPDRS">Analysis of State Street ETF Pages</a>
+            <a class="dropdown-item" href="#JCD">jClassDesigner</a>
+            <a class="dropdown-item" href="#331">Computer Security</a>
+            <a class="dropdown-item" href="#SMR">Super Mario Remake</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#gallery">Gallery</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#contact">Contact</a>
+        </li>
+      </ul>
+    </div>
   </nav>
 
   <div class="jumbotron jumbotron-fluid" id="top">
@@ -125,12 +131,12 @@
   </div>
 
   <div class="container" id="aboutMe" align="middle" style="padding-top: 56px;">
-    <h1 style="padding-bottom: 56px;">About Me</h1>
+    <h1>About Me</h1>
     <div class="row">
-      <div class="col-6">
+      <div class="col-12 col-lg-6" style="margin-bottom: 20px;">
         <img class="rounded-circle" src="images/eportfoliopic.jpg" alt="Julien Chen">
       </div>
-      <div class="col-6 vcenter">
+      <div class="col-12 col-lg-6 vcenter">
         <p class="text-left">&emsp;&emsp;I'm a recent graduate from Stony Brook University (May 2018) with a Bachelor's Degree in Computer Science
           with a minor in Business. I started programming in my junior year of high school and have since worked with multiple
           languages such as C, Java, JavaScript, PHP, and Python. Some of my hobbies and interests include swimming, snowboarding,
@@ -155,12 +161,12 @@
   <div class="container" id="education" align="middle" style="padding-top: 56px; margin-bottom: 50px;">
     <h1>Education</h1>
     <div class="row" style="padding-top: 10px;">
-      <div class="col-4" align="right">
+      <div class="col-12 col-sm-4" align="right">
         <img class="img-fluid" src="images/SBU horz_2clr_rgb_300ppi.png" style="max-width: 100%; height: auto;">
         <p style="margin-bottom: 0px;">August 2014 - May 2018</p>
         <img src="images/baseline_location_on_black_18dp.png"> Stony Brook, New York
       </div>
-      <div class="col-8" align="left" style="padding-top:10px;padding-bottom:20px;padding-left:70px; padding-right: 40px;">
+      <div class="col-12 col-sm-8" align="left" style="padding-top:10px;padding-bottom:20px;padding-left:70px; padding-right: 40px;">
         <h5>Bachelor of Science - Computer Science</h5>
         <p>
           I was exposed to a variety of technologies through courses such as Computer Networks, Computer Security, Computer Vision,
@@ -177,12 +183,12 @@
     </div>
 
     <div class="row">
-      <div class="col-4" align="right">
+      <div class="col-12 col-md-4" align="right">
         <img class="img-fluid" src="images/STUYHS.png" style="max-width: 100%; height: auto;">
         <p style="margin-bottom: 0px;">September 2010 - June 2014</p>
         <img src="images/baseline_location_on_black_18dp.png"> New York, New York
       </div>
-      <div class="col-8" align="left" style="padding-top:20px;padding-left:70px;padding-right: 40px;">
+      <div class="col-12 col-md-8" align="left" style="padding-top:20px;padding-left:70px;padding-right: 40px;">
         <h5>Introduction to Computer Science / AP Computer Science</h5>
         My interest in Computer Science was sparked when I took a Intro to C.S. course. With the satisifcation of creating my first
         project, I decided to delve deeper and enroll in the AP Course.
@@ -199,7 +205,7 @@
           <a href="https://github.com/jienchen/Hemlock" target="_blank">Hemlock: Movie Database Website</a>
         </h3>
         <div class="row">
-          <div class="col-6">
+          <div class="col-12 col-md-6 vcenter">
             <div class="hovereffect">
               <img class="img-fluid" src="images/HemlockHomePage.png" style="max-width: 70%; height: auto;">
               <div class="overlay">
@@ -207,7 +213,7 @@
               </div>
             </div>
           </div>
-          <div class="col-6 vcenter">
+          <div class="col-12 col-md-6 vcenter">
             <p class="font-weight-light">Project Members: Jeffrey Fu, Masato Ikeda, Kyle Johnson</p>
             <p class="text-left">
               &emsp;&emsp;Hemlock is a reproduction of the
@@ -229,7 +235,7 @@
           <a href="https://github.com/jienchen/SPDRSAnalysis" target="_blank">Analysis of State Street ETF Pages</a>
         </h3>
         <div class="row">
-          <div class="col-6 vcenter">
+          <div class="col-12 col-md-6 vcenter">
             <p align="left">
               &emsp;&emsp;This project parses top holdings for specificed ETF's from
               <a href="https://us.spdrs.com/en" target="_blank">State Street's website</a> using
@@ -239,7 +245,7 @@
               stored in a SQL database so subsequent queries would not require the site to be scraped again.
             </p>
           </div>
-          <div class="col-6">
+          <div class="col-12 col-md-6 vcenter">
             <div class="hovereffect">
               <img class="img-fluid m-0" src="images/SPDRS.png">
               <div class="overlay">
@@ -257,7 +263,7 @@
           <a href="https://github.com/jienchen/jClassDesignerApp">jClassDesigner: Java UML Diagram Designer</a>
         </h3>
         <div class="row">
-          <div class="col-6">
+          <div class="col-12 col-md-6 vcenter">
             <div class="hovereffect">
               <img class="img-fluid" src="images/jClassDesigner.png">
               <div class="overlay">
@@ -265,7 +271,7 @@
               </div>
             </div>
           </div>
-          <div class="col-6 vcenter">
+          <div class="col-12 col-md-6 vcenter">
             <p align="left">
               &emsp;&emsp;The jClassDesigner is a UML diagram designer for Java Classes using the JavaFx platform. Users are able to add
               classes, variables, attributes, and interfaces. Each diagram could be saved as a JSON file and then loaded
@@ -282,7 +288,7 @@
           <a href="https://github.com/jienchen/CSE331-Computer-Security" target="_blank">Computer Security</a>
         </h3>
         <div class="row">
-          <div class="col-6 vcenter">
+          <div class="col-12 col-md-6 vcenter">
             <p class="text-left">
               &emsp;&emsp;By running on a virtual machine such as
               <a href="https://www.kali.org/" target="_blank">Kali Linux</a>, which includes
@@ -292,7 +298,7 @@
               how systems are susceptible to threats but also how they can be protected from them.
             </p>
           </div>
-          <div class="col-6">
+          <div class="col-12 col-md-6 vcenter">
             <div class="hovereffect">
               <img class="img-fluid" src="images/synprobe.png" style="max-width: 70%; height: auto;">
               <div class="overlay">
@@ -310,7 +316,7 @@
           <a href="https://github.com/jienchen/SuperMarioRemake" target="_blank">Super Mario Remake</a>
         </h3>
         <div class="row">
-          <div class="col-6">
+          <div class="col-12 col-md-6 vcenter">
             <div class="hovereffect">
               <img class="img-fluid" src="images/SuperMarioRemake.png">
               <div class="overlay">
@@ -318,7 +324,7 @@
               </div>
             </div>
           </div>
-          <div class="col-6 vcenter">
+          <div class="col-12 col-md-6 vcenter">
             <p class="font-weight-light">Project Members: Milo Han</p>
             <p class="text-left">
               &emsp;&emsp;One of my earliest projects is a recreation of the classic Super Mario Bros. using
@@ -334,7 +340,7 @@
   <div class="container" id="gallery" align="middle" style="padding-top: 56px;">
     <h1>Gallery</h1>
     <p style="font-size: 18px;">Photography is one of my many interests. Here are some pictures I have taken while traveling. Enjoy!</p>
-    <div class="row" style="padding-top:10px;padding-bottom: 56px;">
+    <div class="row" style="padding-top:10px;">
       <div class="col-6">
         <a class="notViewed slideIn" data-position="bottom" data-offset="60" href="images/Edited-3090.jpg" data-lightbox="gallery"
           data-title="Fuzhou, China">
@@ -360,7 +366,7 @@
   </div>
 
   <div class="container-fluid" id="contact" align="middle" style="padding-top: 56px;">
-    <h1 style="padding-bottom: 20px;">Contact Me</h1>
+    <h1 style="margin-bottom: 20px;">Contact Me</h1>
     <div class="row py-3">
       <div class="col-12">
         <img src="images/baseline_email_black_18dp.png"> Email:
