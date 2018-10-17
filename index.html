@@ -13,77 +13,7 @@
   <script src="js/jquery-3.3.1.js"></script>
   <script src="js/popper.min.js"></script>
   <script src="js/bootstrap.min.js"></script>
-  <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3.31exp"></script>
   <script src="js/lightbox.js"></script>
-  <script>
-    lightbox.option({
-      'fadeDuration': 400,
-      'imageFadeDuration': 200
-    })
-  </script>
-  <script type="text/javascript">
-    $(document).ready(function () {
-      $(".navbar, a").on('click', function (event) {
-        if (this.hash !== "") {
-          event.preventDefault();
-          var hash = this.hash;
-          $('html, body').animate({
-            scrollTop: $(hash).offset().top
-          }, 600, function () {
-            window.location.hash = hash;
-          });
-        }
-      });
-      $(".clear").on('click', function (event) {
-        console.log($("#caret").html());
-        if ($("#caret").html() == '▼') {
-          $("#caret").html('▲');
-        }
-        else {
-          $("#caret").html('▼');
-        }
-      });
-    });
-
-    $(function () {
-      var $blocks = $('.slideIn.notViewed');
-      var $window = $(window);
-
-      $window.on('scroll', function (e) {
-        $blocks.each(function (i, elem) {
-          if ($(this).hasClass('viewed'))
-            return;
-
-          isScrolledIntoView($(this));
-        });
-      });
-    });
-
-    function isScrolledIntoView(elem) {
-      var docViewTop = $(window).scrollTop();
-      var docViewBottom = docViewTop + $(window).height();
-      var elemOffset = 0;
-
-      if (elem.data('offset') != undefined) {
-        elemOffset = elem.data('offset');
-      }
-      var elemTop = $(elem).offset().top;
-      var elemBottom = elemTop + $(elem).height();
-
-      if (elemOffset != 0) { // custom offset is updated based on scrolling direction
-        if (docViewTop - elemTop >= 0) {// scrolling up from bottom
-          elemTop = $(elem).offset().top + elemOffset;
-        } else {// scrolling down from top
-          elemBottom = elemTop + $(elem).height() - elemOffset
-        }
-      }
-
-      if ((elemBottom <= docViewBottom) && (elemTop >= docViewTop)) {
-        $(elem).removeClass('notViewed').addClass('viewed');
-      }
-    }
-
-  </script>
 </head>
 
 <body data-spy="scroll" data-target=".navbar" data-offset="50">
@@ -387,4 +317,73 @@
     <br>
     <br>
   </div>
+  <script>
+    lightbox.option({
+      'fadeDuration': 400,
+      'imageFadeDuration': 200
+    })
+  </script>
+  <script type="text/javascript">
+    $(document).ready(function () {
+      $(".navbar, a").on('click', function (event) {
+        if (this.hash !== "") {
+          event.preventDefault();
+          var hash = this.hash;
+          $('html, body').animate({
+            scrollTop: $(hash).offset().top
+          }, 600, function () {
+            window.location.hash = hash;
+          });
+        }
+      });
+      $(".clear").on('click', function (event) {
+        console.log($("#caret").html());
+        if ($("#caret").html() == '▼') {
+          $("#caret").html('▲');
+        }
+        else {
+          $("#caret").html('▼');
+        }
+      });
+    });
+
+    $(function () {
+      var $blocks = $('.slideIn.notViewed');
+      var $window = $(window);
+
+      $window.on('scroll', function (e) {
+        $blocks.each(function (i, elem) {
+          if ($(this).hasClass('viewed'))
+            return;
+
+          isScrolledIntoView($(this));
+        });
+      });
+    });
+
+    function isScrolledIntoView(elem) {
+      var docViewTop = $(window).scrollTop();
+      var docViewBottom = docViewTop + $(window).height();
+      var elemOffset = 0;
+
+      if (elem.data('offset') != undefined) {
+        elemOffset = elem.data('offset');
+      }
+      var elemTop = $(elem).offset().top;
+      var elemBottom = elemTop + $(elem).height();
+
+      if (elemOffset != 0) { // custom offset is updated based on scrolling direction
+        if (docViewTop - elemTop >= 0) {// scrolling up from bottom
+          elemTop = $(elem).offset().top + elemOffset;
+        } else {// scrolling down from top
+          elemBottom = elemTop + $(elem).height() - elemOffset
+        }
+      }
+
+      if ((elemBottom <= docViewBottom) && (elemTop >= docViewTop)) {
+        $(elem).removeClass('notViewed').addClass('viewed');
+      }
+    }
+
+  </script>
 </body>
